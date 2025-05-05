@@ -80,3 +80,5 @@ createcmake () {
     printf "    std::cout << \"Hello, world!\\\\n\";\n" >> $maincpp
     printf "}\n" >> $maincpp
 }
+
+export PATH="$PATH:$(go env GOPATH)"

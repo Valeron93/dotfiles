@@ -1,6 +1,5 @@
 zstyle ':prezto:load' pmodule \
   'directory' \
-  'utility' \
   'completion' \
   'git' \
   'prompt' \
