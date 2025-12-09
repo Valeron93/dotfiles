@@ -4,7 +4,7 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
 fi
 
 # add Golang bin to PATH
-if test -x go; then 
+if type go &>/dev/null; then 
 	export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
