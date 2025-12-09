@@ -21,22 +21,21 @@ source "${ZINIT_HOME}/zinit.zsh"
 setopt promptsubst
 
 ZSH_THEME="alanpeabody"
-
-zinit snippet OMZL::git.zsh
-zinit snippet OMZP::git
-zinit snippet OMZL::async_prompt.zsh
-zinit snippet OMZL::prompt_info_functions.zsh
-zinit snippet OMZP::sudo
-zinit snippet OMZT::alanpeabody
+zi snippet OMZL::key-bindings.zsh
+zi snippet OMZL::completion.zsh
+zi snippet OMZL::git.zsh
+zi snippet OMZP::git
+zi snippet OMZL::async_prompt.zsh
+zi snippet OMZL::prompt_info_functions.zsh
+zi snippet OMZP::sudo
+zi snippet OMZT::alanpeabody
 
 autoload -Uz compinit && compinit
-zinit cdreplay -q
+zi cdreplay -q
 
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-
+zi light zsh-users/zsh-syntax-highlighting
+zi light zsh-users/zsh-completions
+zi light zsh-users/zsh-autosuggestions
 
 # History
 HISTSIZE=5000
@@ -55,16 +54,17 @@ setopt hist_find_no_dups
 # Aliases
 alias ls='ls -h --color'
 alias vim='nvim'
-alias vi='nvim'
 alias la='ls -la'
 alias ll='ls -l'
 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-if test -x fzf; then 
+export EDITOR=vim
 
-    eval "$(fzf --zsh)"
-
+if type nvim &>/dev/null; then 
+	export EDITOR=nvim
 fi
 
-export EDITOR=vi
+# set cursor shape to |
+echo -n '\e[5 q'
 
