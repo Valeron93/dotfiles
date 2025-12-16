@@ -1,0 +1,48 @@
+general {
+        colors = true
+        interval = 5
+}
+
+order += "wireless _first_"
+order += "load"
+order += "memory"
+order += "tztime local"
+order += "volume master"
+
+wireless _first_ {
+        format_up = "W: (%quality) %ip"
+        format_down = "W: down"
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+}
+
+battery all {
+        format = "%status %percentage %remaining"
+}
+
+disk "/" {
+        format = "DISK: %used / %avail"
+}
+
+load {
+        format = "%1min%"
+}
+
+memory {
+        format = "MEM: %used / %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%d.%d.%Y %H:%M"
+}
+
+volume master {
+	format = "VOL: %volume"
+	format_muted = "VOL muted"
+	device = "pulse"
+}
