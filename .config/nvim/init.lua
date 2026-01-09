@@ -15,6 +15,9 @@ map('n', '<leader>w', ':w<CR>')
 map({'x', 'v'}, 'x', '"_d')
 map('n', '<esc>', ':nohl<CR><esc>')
 
+map({'v', 'x'}, '<', '<gv')
+map({'v', 'x'}, '>', '>gv')
+
 -- copy and paste over ssh
 vim.schedule(function()
     vim.opt.clipboard:append('unnamedplus')
