@@ -50,10 +50,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-
 # Aliases
 alias ls='ls -h --color'
-alias vim='nvim'
 alias la='ls -la'
 alias ll='ls -l'
 
@@ -63,8 +61,31 @@ export EDITOR=vim
 
 if type nvim &>/dev/null; then 
 	export EDITOR=nvim
+  alias vim='nvim'
+  alias n='nvim'
 fi
 
+if command -v eza &>/dev/null; then
+  alias ls='eza -lh --group-directories-first --icons=auto'  
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd="zd"
+  zd() {
+    if [ $# -eq 0 ]; then
+      builtin cd ~ && return
+    elif [ -d "$1" ]; then
+      builtin cd "$1"
+    else
+      z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+    fi
+  }
+fi
+
+alias g='git'
+alias d='docker'
+alias dc='docker compose'
+alias c='code'
 # set cursor shape to |
 echo -n '\e[5 q'
-
