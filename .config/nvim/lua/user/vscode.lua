@@ -12,27 +12,50 @@ map('n', ']d', function() vscode.action('editor.action.marker.next') end)
 map('n', '[d', function() vscode.action('editor.action.marker.prev') end)
 
 -- Format whole file in Normal Mode
-map('n', '<leader>f', function() 
-    vscode.action('editor.action.formatDocument') 
+map('n', '<leader>f', function()
+    vscode.action('editor.action.formatDocument')
 end)
 
 -- Format selection in Visual Mode
-map({'x', 'v'}, '<leader>f', function() 
-    vscode.action('editor.action.formatSelection') 
+map({'x', 'v'}, '<leader>f', function()
+    vscode.action('editor.action.formatSelection')
 end)
 
-map('n', '<leader>p', function() 
-    vscode.action('workbench.action.showCommands') 
+map('n', '<leader>p', function()
+    vscode.action('workbench.action.showCommands')
 end)
 
-map('n', '<leader>s', function() 
-    vscode.action('workbench.action.gotoSymbol') 
+map('n', '<leader>s', function()
+    vscode.action('workbench.action.gotoSymbol')
 end)
 
-map('n', '<leader>d', function() 
-    vscode.action('editor.action.revealDefinition') 
+map('n', '<leader>d', function()
+    vscode.action('editor.action.revealDefinition')
 end)
 
-map('n', '<leader>t', function() 
-    vscode.action('workbench.action.terminal.toggleTerminal') 
+map('n', '<leader>t', function()
+    vscode.action('workbench.action.terminal.toggleTerminal')
 end)
+
+map('n', '<leader>or', function()
+    vscode.action('workbench.action.openRecent')
+end)
+
+vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
+    pattern = {"*"},
+    callback = function()
+        map("n", "-", function() vscode.action('oil-code.open') end)
+    end,
+})
+
+vim.api.nvim_create_autocmd({'FileType'}, {
+    pattern = {"oil"},
+    callback = function()
+        map("n", "-", function() vscode.action('oil-code.openParent') end)
+        map("n", "_", function() vscode.action('oil-code.openCwd') end)
+        map("n", "<CR>", function() vscode.action('oil-code.select') end)
+        map("n", "<C-t>", function() vscode.action('oil-code.selectTab') end)
+        map("n", "<C-l>", function() vscode.action('oil-code.refresh') end)
+        map("n", "`", function() vscode.action('oil-code.cd') end)
+    end,
+})
