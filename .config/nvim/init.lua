@@ -6,6 +6,7 @@ vim.opt.smartindent = true
 vim.opt.undofile = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.o.scrolloff = 10
 
 vim.g.mapleader = ' '
 vim.g.localleader = ' '
