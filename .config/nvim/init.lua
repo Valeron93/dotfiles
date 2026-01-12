@@ -13,11 +13,12 @@ vim.g.localleader = ' '
 local map = vim.keymap.set
 
 map('n', '<leader>w', ':w<CR>')
-map({'x', 'v'}, 'x', '"_d')
 map('n', '<esc>', ':nohl<CR><esc>')
 
-map({'v', 'x'}, '<', '<gv')
-map({'v', 'x'}, '>', '>gv')
+map('v', '<', '<gv')
+map('v', '>', '>gv')
+
+map({'n', 'v'}, '<leader>d', '"_d')
 
 -- copy and paste over ssh
 vim.schedule(function()

@@ -29,10 +29,6 @@ map('n', '<leader>s', function()
     vscode.action('workbench.action.gotoSymbol')
 end)
 
-map('n', '<leader>d', function()
-    vscode.action('editor.action.revealDefinition')
-end)
-
 map('n', '<leader>t', function()
     vscode.action('workbench.action.terminal.toggleTerminal')
 end)
