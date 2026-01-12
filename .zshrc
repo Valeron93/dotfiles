@@ -83,6 +83,10 @@ if command -v zoxide &> /dev/null; then
   }
 fi
 
+if command -v fzf &>/dev/null; then
+	eval "$(fzf --zsh)"
+fi
+
 alias g='git'
 alias d='docker'
 alias dc='docker compose'
