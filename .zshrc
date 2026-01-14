@@ -87,6 +87,16 @@ if command -v fzf &>/dev/null; then
 	eval "$(fzf --zsh)"
 fi
 
+if [[ $(uname) == "Linux" ]]; then
+	caffeinate() {
+		if [ $# -eq 0 ]; then
+			systemd-inhibit sleep 1d
+		else
+			systemd-inhibit sleep $@
+		fi
+	}
+fi
+
 alias g='git'
 alias d='docker'
 alias dc='docker compose'
