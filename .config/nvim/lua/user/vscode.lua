@@ -16,6 +16,10 @@ map('n', '<leader>f', function()
     vscode.action('editor.action.formatDocument')
 end)
 
+map('n', '<leader>q', function()
+    vscode.action('workbench.action.closeActiveEditor')
+end)
+
 -- Format selection in Visual Mode
 map({'x', 'v'}, '<leader>f', function()
     vscode.action('editor.action.formatSelection')

@@ -15,6 +15,8 @@ local map = vim.keymap.set
 map('n', '<leader>w', ':w<CR>')
 map('n', '<esc>', ':nohl<CR><esc>')
 
+map('n', '<leader>q', ':q<CR>')
+
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
@@ -43,5 +45,4 @@ if vim.g.vscode then
     require 'user.vscode'
 else
     map('n', '<leader>f', ':Explore<CR>')
-    map('n', '<leader>q', ':q<CR>')
 end

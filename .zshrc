@@ -4,7 +4,7 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
 fi
 
 # add Golang bin to PATH
-if type go &>/dev/null; then 
+if type go &>/dev/null; then
 	export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
@@ -33,7 +33,7 @@ zi snippet OMZT::alanpeabody
 autoload -Uz compinit && compinit
 zi cdreplay -q
 
-zi light zsh-users/zsh-syntax-highlighting
+# zi light zsh-users/zsh-syntax-highlighting
 zi light zsh-users/zsh-completions
 zi light zsh-users/zsh-autosuggestions
 
@@ -59,14 +59,14 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 export EDITOR=vim
 
-if type nvim &>/dev/null; then 
+if type nvim &>/dev/null; then
 	export EDITOR=nvim
   alias vim='nvim'
   alias n='nvim'
 fi
 
 if command -v eza &>/dev/null; then
-  alias ls='eza -lh --group-directories-first --icons=auto'  
+  alias ls='eza -lh --group-directories-first --icons=auto'
 fi
 
 if command -v zoxide &> /dev/null; then
@@ -101,5 +101,3 @@ alias g='git'
 alias d='docker'
 alias dc='docker compose'
 alias c='code'
-# set cursor shape to |
-echo -n '\e[5 q'
