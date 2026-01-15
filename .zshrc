@@ -1,19 +1,19 @@
 # eval brew env if brew is installed (macOS)
 if [[ -f "/opt/homebrew/bin/brew" ]] then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # add Golang bin to PATH
 if type go &>/dev/null; then
-	export PATH="$PATH:$(go env GOPATH)/bin"
+    export PATH="$PATH:$(go env GOPATH)/bin"
 fi
 
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 source "${ZINIT_HOME}/zinit.zsh"
@@ -60,41 +60,41 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 export EDITOR=vim
 
 if type nvim &>/dev/null; then
-	export EDITOR=nvim
-  alias vim='nvim'
-  alias n='nvim'
+    export EDITOR=nvim
+    alias vim='nvim'
+    alias n='nvim'
 fi
 
 if command -v eza &>/dev/null; then
-  alias ls='eza -lh --group-directories-first --icons=auto'
+    alias ls='eza -lh --group-directories-first --icons=auto'
 fi
 
 if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init zsh)"
-  alias cd="zd"
-  zd() {
-    if [ $# -eq 0 ]; then
-      builtin cd ~ && return
-    elif [ -d "$1" ]; then
-      builtin cd "$1"
-    else
-      z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
-    fi
-  }
+    eval "$(zoxide init zsh)"
+    alias cd="zd"
+    zd() {
+        if [ $# -eq 0 ]; then
+            builtin cd ~ && return
+        elif [ -d "$1" ]; then
+            builtin cd "$1"
+        else
+            z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+        fi
+    }
 fi
 
 if command -v fzf &>/dev/null; then
-	eval "$(fzf --zsh)"
+    eval "$(fzf --zsh)"
 fi
 
 if [[ $(uname) == "Linux" ]]; then
-	caffeinate() {
-		if [ $# -eq 0 ]; then
-			systemd-inhibit sleep 1d
-		else
-			systemd-inhibit sleep $@
-		fi
-	}
+    caffeinate() {
+        if [ $# -eq 0 ]; then
+            systemd-inhibit sleep 1d
+        else
+            systemd-inhibit sleep $@
+        fi
+    }
 fi
 
 alias g='git'
